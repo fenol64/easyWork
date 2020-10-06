@@ -1,0 +1,50 @@
+.image-top-header {
+    position: absolute;
+    top: 250px;
+    left: 55%;
+}
+
+.flex-container-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.margin-top-header{
+    margin: 150px 100px !important;
+}
+
+.how-works {
+    background: #ffffff;
+}
+
+header, .plans {
+    background: #F5F3F4 ;
+}
+
+.desc-how-work {
+    font-size: 16px;
+}
+
+.flex-container-how-work {
+    display: flex;
+    justify-content: space-around;
+}
+
+.plans .text-plans-content > p {
+    font-size: 16px;
+}
+
+.box-plans {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.box-plan {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #1A73EA;
+    padding: 10px 50px;
+    border-radius: 10px;
+}

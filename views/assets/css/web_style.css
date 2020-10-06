@@ -1,6 +1,6 @@
 
 .line-bottom {
-    border-bottom: 1px solid #1A73EA;
+    
 }
 
 
@@ -17,4 +17,14 @@
 
 .m-20 {
     margin-bottom: 10px;
+}
+
+
+.blue-bg {
+    color: #1A73EA;
+}
+
+footer {
+    background: #F5F3F4 ;
+    border-top: 1px solid hsl(214, 83%, 51%);
 }

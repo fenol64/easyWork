@@ -4,7 +4,7 @@
         "name" => "easyWork",
         "desc" => "Melhor plataforma de serviços online",
         "locale" => "pt_BR",
-        "base_url" => "http://localhost/Projects/easyWork"
+        "base_url" => "https://localhost/Projects/easyWork"
     ]);
 
     define("PAGARME_API_KEY", ""); // coloque sei token da api do pagar.me
