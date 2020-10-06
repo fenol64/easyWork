@@ -15,7 +15,7 @@ $router->namespace('Source\App');
  */
 
 $router->get("/", "Web:index", "web.index");
-
+$router->get("/parceiros", "Web:partners", "web.partners");
 
 /*
  * FOR ERRORS
