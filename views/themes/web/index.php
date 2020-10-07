@@ -1,4 +1,4 @@
-<?php $v->layout("themes/template"); ?>
+<?php $v->layout("themes/template_web"); ?>
 
 <?php $v->start("css"); ?>
 <link rel="stylesheet" href="<?= asset("css/libs/glide.core.min.css"); ?>">
@@ -13,16 +13,16 @@
                     <a href="<?= $router->route('web.partners') ?>">Parceiros</a>
                 </li>
                 <li class="nav-list-item">
-                    <a href="">Serviços</a>
+                    <a href="<?= $router->route('web.services', ['service' => '1']) ?>">Serviços</a>
                 </li>
                 <li class="nav-list-item">
                     <a href="#sobrenos">Sobre</a>
                 </li>
                 <li class="nav-list-item">
-                    <a href="">cadastrar</a>
+                    <a href="<?= $router->route('web.cadastrar') ?>">cadastrar</a>
                 </li>
                 <li class="nav-list-item mr-5">
-                    <a href="">
+                    <a href="<?= $router->route('web.login') ?>">
                         <button type="button" class="nav-btn">Login</button>
                     </a>
                 </li>
@@ -45,8 +45,8 @@
                     <span class="searchbox">
                         <img src="<?=asset('img/icons/glass.png')?>" alt="">
                     </span>
-                    <input type="text" class="input-header" size="65" placeholder="Busque por um serviço">
-                    <button type="button" class="btn-header-center ml-3">
+                    <input type="text" class="input-header" size="65" placeholder="Busque por um serviço" id="service_box">
+                    <button type="button" class="btn-header-center ml-3" id="btn-form-submit">
                         Buscar
                     </button>
                 </div>

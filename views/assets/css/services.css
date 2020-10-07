@@ -1,0 +1,33 @@
+body {
+    background-color: #F5F3F4;
+}
+
+.flex-terms {
+    display:flex;
+    align-items:baseline;
+    justify-content: space-between;
+}
+
+.main {
+    background-color: #F5F3F4;
+   
+}
+
+.main_margin {
+    margin: 10px 250px;
+}
+
+.services {
+    background: #fff;
+    margin: 0 250px;
+    border-radius: 10px;
+    border: 1px solid ;
+}
+
+.service {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #1A73EA;
+    margin: 5px 160px;
+    padding: 10px;
+}

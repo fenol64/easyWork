@@ -13,6 +13,7 @@ class Categories extends DataLayer
       *
       * @return void
       */
+      
      function __construct() {
         parent::__construct("categories", ["name_category"], 'id_category', true);
     }

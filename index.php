@@ -16,6 +16,10 @@ $router->namespace('Source\App');
 
 $router->get("/", "Web:index", "web.index");
 $router->get("/parceiros", "Web:partners", "web.partners");
+$router->get("/servicos/{service}", "Web:services", "web.services");
+$router->get("/termos", "Web:terms", "web.terms");
+$router->get("/login", "Web:login", "web.login");
+$router->get("/cadastro", "Web:cadatrar", "web.cadastrar");
 
 /*
  * FOR ERRORS

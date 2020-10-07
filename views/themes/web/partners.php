@@ -1,4 +1,4 @@
-<?php $v->layout("themes/template"); ?>
+<?php $v->layout("themes/template_web"); ?>
 
 <?php $v->start("css"); ?>
     <link rel="stylesheet" href="<?= asset("css/partners.css"); ?>">
