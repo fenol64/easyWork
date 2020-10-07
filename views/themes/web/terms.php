@@ -16,5 +16,5 @@
 </header>
 <section class="terms mt-5">
     <h1 class="text-center blue-bg"> Termos de uso </h1>
-
+    
 </section>

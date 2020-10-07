@@ -34,8 +34,9 @@
                     </div>
                 <?php endforeach;
             else:?>
-            <div class="mt-4 h4">
-                <?= $search; ?></div>
+                <div class="mt-4 h4">
+                    <?= $search; ?>
+                </div>
             <?php endif;?>
         </div>
     </div>

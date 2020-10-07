@@ -48,14 +48,14 @@ class Web extends Controller
 
     public function cadatrar()
     {
-        echo $this->view->render("themes/web/terms", [
+        echo $this->view->render("themes/auth/cadastro", [
             'title' => site('name'). ' | Cadastre-se!'
         ]);
     }
 
     public function login()
     {
-        echo $this->view->render("themes/web/terms", [
+        echo $this->view->render("themes/auth/login", [
             'title' => site('name'). ' | Faça o login!'
         ]);
     }

@@ -22,12 +22,8 @@ $router->get("/login", "Web:login", "web.login");
 $router->get("/cadastro", "Web:cadatrar", "web.cadastrar");
 
 /*
- * FOR ERRORS
+ * WEB POST ROUTES
  */
-$router->group('ooops');
-$router->get("/{errcode}", "Web:error", "web.error");
-
-
 
 
 /*
@@ -36,6 +32,14 @@ $router->get("/{errcode}", "Web:error", "web.error");
 $router->group(null);
 $router->get("/facebook", "Auth:facebook", "auth.facebook");
 $router->get("/google", "Auth:google", "auth.google");
+
+
+
+/*
+ * FOR ERRORS
+ */
+$router->group('ooops');
+$router->get("/{errcode}", "Web:error", "web.error");
 
 // executins routes
 $router->dispatch();
