@@ -52,8 +52,8 @@
     */
 
     define('FACEBOOK_LOGIN', [
-        "clientId" => "923770348061346",
-        "clientSecret" => "fbddfac892f8b608943b46054d26fd52",
+        "clientId" => "2098284290304529",
+        "clientSecret" => "c4cb16cefe99d5f8bd8cfd2979c8da87",
         "redirectUri" => SITE["base_url"] . "/facebook",
         "graphApiVersion" => "v6.0"
     ]);
@@ -63,8 +63,8 @@
     */
 
     define('GOOGLE_LOGIN', [
-        "clientId" => "689804817498-o0bapdpr4k736q7ftb6b0lvet80u9cqa.apps.googleusercontent.com",
-        "clientSecret" => "qSlvTrBtS_6PqJSWSf0skpqc",
+        "clientId" => "689804817498-pfpjlgecsv756qm4l0tma6pl9cf81l8s.apps.googleusercontent.com",
+        "clientSecret" => "3ddef7b4hmZNAb7uuR6zoB0W",
         "redirectUri" => SITE["base_url"] . "/google"
     ]);
     

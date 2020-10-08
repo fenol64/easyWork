@@ -46,15 +46,41 @@ class Web extends Controller
         ]);
     }
 
-    public function cadatrar()
+    public function cadastrar()
     {
+
+        $form_user = new \stdClass();
+        $form_user->photo = null;
+        $form_user->nome = null;
+        $form_user->Snome = null;
+        $form_user->email = null;
+
+        if (!empty($_SESSION["facebook_auth"])) {
+            $social_user = unserialize($_SESSION["facebook_auth"]);
+            $form_user->photo = $social_user->getPictureUrl();
+        } else if (!empty($_SESSION["google_auth"])) {
+            $social_user = unserialize($_SESSION["google_auth"]);
+            $form_user->photo = $social_user->getAvatar();
+        } else {
+            $social_user = false;
+            $form_user->photo = asset('img/icons/avatar.png');
+        }
+
+        if ($social_user) {
+            $form_user->nome = $social_user->getFirstName();
+            $form_user->Snome = $social_user->getLastName();
+            $form_user->email = $social_user->getEmail();
+        }
+
         echo $this->view->render("themes/auth/cadastro", [
-            'title' => site('name'). ' | Cadastre-se!'
+            'title' => site('name'). ' | Cadastre-se!',
+            'data' => $form_user
         ]);
     }
 
     public function login()
     {
+
         echo $this->view->render("themes/auth/login", [
             'title' => site('name'). ' | Faça o login!'
         ]);
@@ -68,21 +94,14 @@ class Web extends Controller
         ]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function error($data)
     {
-        # code...
+
+        $errcode = filter_var($data['errcode'], FILTER_SANITIZE_STRIPPED);
+
+        echo $this->view->render("themes/web/error", [
+            'title' => site('name'). " | ooops erro {$errcode}",
+            'errcode' => $errcode
+        ]);
     }
 }

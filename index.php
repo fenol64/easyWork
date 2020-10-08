@@ -19,13 +19,13 @@ $router->get("/parceiros", "Web:partners", "web.partners");
 $router->get("/servicos/{service}", "Web:services", "web.services");
 $router->get("/termos", "Web:terms", "web.terms");
 $router->get("/login", "Web:login", "web.login");
-$router->get("/cadastro", "Web:cadatrar", "web.cadastrar");
+$router->get("/cadastro", "Web:cadastrar", "web.cadastrar");
 
 /*
  * WEB POST ROUTES
  */
-
-
+$router->post("/login", "Auth:login", "auth.login");
+$router->post("/register", "Auth:register", "auth.register");
 /*
  * SOCIAL
  */

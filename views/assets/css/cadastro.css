@@ -1,0 +1,65 @@
+.midia {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.midia-box {
+
+    width: 19%;
+    padding: 10px;
+    height: 50px;
+    border: 1px solid #cecece;
+    border-radius: 10px;
+    
+}
+
+.midia-box a {
+    color: #000000;
+}
+
+.img-round {
+    position: relative;
+    left: 5%;
+    margin-left: 50px;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border-radius: 100%;
+    border: 1px solid #000;
+}
+
+.input_names {
+width: 80%;
+padding: 5px;
+border: 1px solid #888888
+}
+
+.input_second {
+    width: 83%;
+    padding: 5px;
+    border: 1px solid #888888
+}
+
+.cpf {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #888888
+}
+
+#bio {
+    resize: none;
+    width: 80%;
+    height: 70px;
+    border: 1px solid #888888
+}
+
+#profilepic {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+.profpicm {
+    margin-left: 73px;
+}

@@ -15,7 +15,7 @@ class User extends DataLayer
       * @return void
       */
      function __construct() {
-        parent::__construct("oauth", [
+        parent::__construct("users", [
             "nome",
             "Snome",
             "nasc",
@@ -56,10 +56,10 @@ class User extends DataLayer
 
         $userByEmail = null;
 
-        if (!$this->id) {
+        if (!$this->id_user) {
             $userByEmail = $this->find("email = :email", "email={$this->email}")->count();
         } else {
-            $userByEmail = $this->find("email = :email AND id != :id", "email={$this->email}&id={$this->id}")->count();
+            $userByEmail = $this->find("email = :email AND id_user != :id", "email={$this->email}&id={$this->id}")->count();
         }
 
         if ($userByEmail) {
@@ -81,12 +81,8 @@ class User extends DataLayer
             $this->fail = new Exception("Informe uma senha com pelo menos 5 caracteres.");
             return false;
         }
-
-        if (password_get_info($this->passwd)["algo"]) {
-            return true;
-        }
         
-        $this->passwd = password_hash($this->passwd, PASSWORD_DEFAULT);
+        $this->passwd = md5($this->passwd);
         return true;
     }
 

@@ -11,11 +11,11 @@
     </div>
     <div class="login_container text-center">
         <h1 class="mb-4 blue-bg">Faça o login</h1>
-        <form action="<?=site().'/login'?>" method="post">
-            <input type="email" name="email" id="email" class="w-100 my-input" placeholder="Digite seu email">
-            <input type="password" name="passwd" id="passwd" class="w-100 my-input mb-2" placeholder="Digite sua senha">
+        <form action="<?=site().'/login'?>" method="post" id="login_form">
+            <input type="email" name="email" id="email"  name="email" class="w-100 my-input" placeholder="Digite seu email">
+            <input type="password" name="passwd" id="passwd" name="passwd" class="w-100 my-input mb-2" placeholder="Digite sua senha">
             <a href="" class="w-100 pt-3 pb-3"> esqueceu a senha? </a>
-            <button type="submit" class="btn-lg btn-primary w-100 mt-2">entrar</button>
+            <button id="send" class="btn-lg btn-primary w-100 mt-2">entrar</button>
         </form>
         <div class="midias mt-4">
             <div class=" mb-4 midia-box">
@@ -24,7 +24,7 @@
                     login com o google
                 </a>
             </div>
-            <div class="midia-box">
+            <div class="midia-box facebook">
                 <a href="<?=$router->route('auth.facebook') ?>">
                     <img src="<?= asset('img/icons/facebook-logo.png') ?>" width="30">
                     login com o facebook
