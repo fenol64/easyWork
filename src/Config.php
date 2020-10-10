@@ -39,12 +39,12 @@
     */
 
     define('MAIL', [
-        "host" => "smtp.gmail.com",
+        "host" => "smtp.sendgrid.net",
         "port" => "587",
-        "user" => "fernandinho.nco@gmail.com",
-        "passwd" => "03F18L19F",
-        "from_name" => "Fernando Oliveira",
-        "from_email" => "fernandinho.nco@gmail.com"
+        "user" => "apikey",
+        "passwd" => "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",
+        "from_name" => "EasyWork",
+        "from_email" => "thebrotherspf@gmail.com"
     ]);
 
     /*

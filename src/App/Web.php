@@ -97,7 +97,8 @@ class Web extends Controller
     {
 
         $email = filter_var($data["email"], FILTER_VALIDATE_EMAIL);
-        $forget = filter_var($data["forget_id"], FILTER_DEFAULT);
+        $forget = filter_var($data["forget"], FILTER_DEFAULT);
+
 
         if (!$email || !$forget) {
             flash("bg-error", "Não foi possível recuperar, tente novamente");

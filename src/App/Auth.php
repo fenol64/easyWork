@@ -96,7 +96,8 @@ class Auth extends Controller {
     public function forget($data)
     {
         $email = filter_var($data["email_recover"], FILTER_VALIDATE_EMAIL);
-    
+        $code = (md5(uniqid(rand(), true)));
+
         if (!$email) {
             echo $this->ajax("message", [
                 "type" => "bg-info",
@@ -114,8 +115,8 @@ class Auth extends Controller {
             ]);
             return;
         }
-
-        $user->forget = (md5(uniqid(rand(), true)));
+       
+        $user->forget = $code;
 
         if (!$user->save()) {
            echo $user->fail()->getMessage();
@@ -129,7 +130,7 @@ class Auth extends Controller {
                 "user" => $user,
                 "link" => $this->router->route("web.reset", [
                     "email" => $user->email,
-                    "forget" => $user->forget
+                    "forget" => $code
                 ])
             ]),
             "{$user->first_name} {$user->last_name}",

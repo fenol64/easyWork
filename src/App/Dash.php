@@ -8,15 +8,9 @@ class Dash extends Controller {
         parent::__construct($router);
     }
 
+
     public function index()
     {
         echo 'DASH';
     }
-
-
-
-
-
-
-
 }

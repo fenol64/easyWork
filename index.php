@@ -20,7 +20,7 @@ $router->get("/servicos/{service}", "Web:services", "web.services");
 $router->get("/termos", "Web:terms", "web.terms");
 $router->get("/login", "Web:login", "web.login");
 $router->get("/recuperar", "Web:forget", "web.forget");
-$router->get("/senha/{email}/{forget_id}", "Web:reset", "web.reset");
+$router->get("/senha/{email}/{forget}", "Web:reset", "web.reset");
 $router->get("/cadastro", "Web:cadastrar", "web.cadastrar");
 
 /*
