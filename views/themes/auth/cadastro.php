@@ -30,22 +30,16 @@
         <div class="col text-center">
             <form action="<?= site().'/register' ?>" enctype="multipart/form-data">
                 <div class="row ">
-                    <div class="img-round ml-5 mb-2 p-0">
-                        <label for="profile_pic">
-                        <img src="<?= $data->photo ?>" id="profilepic"></label>
-                        <input type="file" id="profile_pic" accept=".jpg,.png" class="d-none" name="profile_pic" onchange="readURL(this);" ><br>
-                    </div>
                     <div class="col mt-4">
                         
-                        <input type="text" class="input_names" placeholder="Digite seu nome" name="nome" value="<?= $data->nome ?>" required>
-                        <input type="text" class="input_names" placeholder="Digite seu sobrenome" name="snome" value="<?= $data->Snome ?>" required>
+                        <input type="text" class="input_names w-100" placeholder="Digite seu nome" name="nome" value="<?= $data->nome ?>" required>
+                        <input type="text" class="input_names w-100" placeholder="Digite seu sobrenome" name="snome" value="<?= $data->Snome ?>" required>
                         
                     </div>
                 </div>
-                <div class="mb-3 profpicm text-left">foto de perfil</div>
                 <div class="w-100 mt-3"></div>
-                <input type="email" placeholder="digite seu email" class="rounded input_second"  name="email" value="<?= $data->email ?>" required>
-                <input type="password" placeholder="digite sua senha" class="rounded input_second mt-3 mb-3" name="passwd" required>
+                <input type="email" placeholder="digite seu email" class="rounded input_second w-100"  name="email" value="<?= $data->email ?>" required>
+                <input type="password" placeholder="digite sua senha" class="rounded input_second w-100 mt-3 mb-3" name="passwd" required>
                 <input type="text" placeholder="digite seu CPF" name="cpf" class="cpf" id="cpf" required> Nascimento: <input type="date" required name="nasc">
                 <div class="w-100 mb-3"></div>
                 bio:<br>

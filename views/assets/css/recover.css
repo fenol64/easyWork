@@ -1,0 +1,18 @@
+.main_container {
+    background-color: #F5F3F4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.myinput {
+    padding: 10px;
+}

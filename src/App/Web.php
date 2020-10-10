@@ -1,7 +1,7 @@
 <?php
 
 namespace Source\App;
-
+use Source\Models\User;
 use Source\Models\Categories;
 
 class Web extends Controller
@@ -50,21 +50,12 @@ class Web extends Controller
     {
 
         $form_user = new \stdClass();
-        $form_user->photo = null;
         $form_user->nome = null;
         $form_user->Snome = null;
         $form_user->email = null;
 
-        if (!empty($_SESSION["facebook_auth"])) {
-            $social_user = unserialize($_SESSION["facebook_auth"]);
-            $form_user->photo = $social_user->getPictureUrl();
-        } else if (!empty($_SESSION["google_auth"])) {
-            $social_user = unserialize($_SESSION["google_auth"]);
-            $form_user->photo = $social_user->getAvatar();
-        } else {
-            $social_user = false;
-            $form_user->photo = asset('img/icons/avatar.png');
-        }
+        $social_user = (!empty($_SESSION["facebook_auth"]) ? unserialize($_SESSION["facebook_auth"]) : 
+        (!empty($_SESSION["google_auth"]) ? unserialize($_SESSION["google_auth"]) : null));
 
         if ($social_user) {
             $form_user->nome = $social_user->getFirstName();
@@ -92,6 +83,37 @@ class Web extends Controller
         echo $this->view->render("themes/web/terms", [
             'title' => site('name'). ' | termos de uso da plataforma!'
         ]);
+    }
+
+    public function forget()
+    {
+        echo $this->view->render("themes/web/recover", [
+            'title' => site('name'). " | recuperar a senha",
+
+        ]); 
+    }
+
+    public function reset($data)
+    {
+
+        $email = filter_var($data["email"], FILTER_VALIDATE_EMAIL);
+        $forget = filter_var($data["forget_id"], FILTER_DEFAULT);
+
+        if (!$email || !$forget) {
+            flash("bg-error", "Não foi possível recuperar, tente novamente");
+            $this->router->redirect("web.forget");
+        }
+
+        $user = (new User())->find("email = :e AND forget = :f", "e={$email}&f={$forget}")->fetch();
+        
+        if (!$user) {
+            flash("bg-error", "Não foi possível recuperar, tente novamente");
+            $this->router->redirect("web.forget");
+        }
+
+        echo $this->view->render("themes/web/reset", [
+            'title' => site('name'). " | recuperar a senha",
+        ]); 
     }
 
     public function error($data)

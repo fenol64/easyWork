@@ -33,7 +33,7 @@ class User extends DataLayer
     
     public function save(): bool
     {
-        if (!$this->validateEmail() || !$this->validadePass() || !parent::save()) {
+        if (!$this->validadePass() || !parent::save()) {
             return false;
         }
         

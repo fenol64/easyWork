@@ -1,15 +1,14 @@
 $(function () {
     $("form").submit(function (e) {
-        e.preventDefault();
+        e.preventDefault()
 
         var form = $(this);
         var action = form.attr("action");
         var data = form.serialize();
-        data.profile_pic = $(' #profilepic ').attr('src');
-
+        
         $.ajax({
             url: action,
-            data: data,
+            data,
             type: "post",
             dataType: "json",
             beforeSend: function (load) {

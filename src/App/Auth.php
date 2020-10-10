@@ -18,15 +18,6 @@ class Auth extends Controller {
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
         $type = 'u';
-        var_dump($data);
-
-        if (validaCPF($data["cpf"])) {
-            echo $this->ajax("message", [
-                "type" => "bg-danger",
-                "message" => "CPF inválido, tente novamente."
-            ]);
-            return;
-        }
 
         $user = new User();
         $user->nome = $data["nome"];
@@ -36,7 +27,6 @@ class Auth extends Controller {
         $user->cpf = $data["cpf"];
         $user->email = $data["email"];
         $user->passwd = $data["passwd"];
-        $user->profile_pic = $data["profile_pic"];
         $user->tipo = $type;
 
 
@@ -51,10 +41,10 @@ class Auth extends Controller {
         }
 
         $_SESSION["user"] = $user->id;
-
-        /*echo $this->ajax("redirect", [
-            "url" => $this->router->route("dashboard.home")
-        ]);*/
+        flash('bg-info', 'cadastro efetuado com sucesso!');
+        echo $this->ajax("redirect", [
+            "url" => $this->router->route("dash.index")
+        ]);
     }
 
 
@@ -99,13 +89,13 @@ class Auth extends Controller {
                 break;
         }
 
-        echo $this->ajax("redirect", ["url" => $this->router->route("web.{$redirectType}Panel")]);
+        echo $this->ajax("redirect", ["url" => $this->router->route("dash.index")]);
     }
 
 
     public function forget($data)
     {
-        $email = filter_var($data["email"], FILTER_VALIDATE_EMAIL);
+        $email = filter_var($data["email_recover"], FILTER_VALIDATE_EMAIL);
     
         if (!$email) {
             echo $this->ajax("message", [
@@ -116,7 +106,7 @@ class Auth extends Controller {
         }
 
         $user = (new User())->find("email = :e", "e={$email}")->fetch();
-
+        
         if (!$user) {
             echo $this->ajax("message", [
                 "type" => "bg-danger",
@@ -126,10 +116,28 @@ class Auth extends Controller {
         }
 
         $user->forget = (md5(uniqid(rand(), true)));
-        $user->save();
 
-        $_SESSION["forget"] = $user->id;
- 
+        if (!$user->save()) {
+           echo $user->fail()->getMessage();
+        }
+        $_SESSION["forget"] = $user->id_user;
+
+        $email = new Email();
+        $email->add(
+            "Recupere sua senha | " . site("name"),
+            $this->view->render("themes/email/recover", [
+                "user" => $user,
+                "link" => $this->router->route("web.reset", [
+                    "email" => $user->email,
+                    "forget" => $user->forget
+                ])
+            ]),
+            "{$user->first_name} {$user->last_name}",
+            $user->email
+        )->send();
+
+        flash("bg-info", "Enviamos um link no seu email para você redefinir sua senha!");
+
         echo $this->ajax("redirect", [
             "url" => $this->router->route("web.forget")
         ]);
@@ -138,8 +146,8 @@ class Auth extends Controller {
 
     public function reset($data): void
     {
-        if (!empty($_SESSION["forget"]) || !$user = (new User())->findById($_SESSION["forget"])) {
-            flash("bg-error", "Não foi possível recuperar, tente novamente");
+        if (!$user = (new User())->findById($_SESSION["forget"])) {
+            flash("bg-danger", "Não foi possível recuperar, tente novamente");
             echo $this->ajax("redirect", [
                 "url" => $this->router->route("web.forget")
             ]);
@@ -148,7 +156,7 @@ class Auth extends Controller {
 
         if (empty($data["password"]) || empty($data["password_re"])) {
             echo $this->ajax("message", [
-                "type" => "alert" ,
+                "type" => "bg-info" ,
                 "message" => "Informe as senhas"
             ]);
             return;
@@ -156,7 +164,7 @@ class Auth extends Controller {
 
         if ($data["password"] != $data["password_re"]) {
             echo $this->ajax("message", [
-                "type" => "error" ,
+                "type" => "bg-danger" ,
                 "message" => "Digite as senhas iguais"
             ]);
             return;
@@ -173,7 +181,7 @@ class Auth extends Controller {
         }
 
         unset($_SESSION["forget"]);
-        flash("success", "Sua senha foi alterada com sucesso");
+        flash("bg-success", "Sua senha foi alterada com sucesso");
 
         echo $this->ajax("redirect", [
             "url" => $this->router->route("web.login")
@@ -188,9 +196,6 @@ class Auth extends Controller {
      */
     public function facebook(): void
     {
-        if (!empty($_SESSION["google_auth"])) {
-            unset($_SESSION["google_auth"]);
-        }
 
         $facebook = new Facebook(FACEBOOK_LOGIN);
         $error = filter_input(INPUT_GET, "error", FILTER_SANITIZE_STRIPPED);
@@ -226,7 +231,7 @@ class Auth extends Controller {
         if ($userById) {
             unset($_SESSION["facebook_auth"]);
             $_SESSION["user"] = $userById->id;
-            $this->router->redirect("web.index");    
+            $this->router->redirect("dash.index");    
         }
 
         $userByemail = (new User())->find("email = :e", "e={$facebook_user->getEmail()}")->fetch();
@@ -245,10 +250,6 @@ class Auth extends Controller {
 
     public function google(): void
     {
-
-        if (!empty($_SESSION["facebook_auth"])) {
-            unset($_SESSION["facebook_auth"]);
-        }
 
         $google = new Google(GOOGLE_LOGIN);
         $error = filter_input(INPUT_GET, "error", FILTER_SANITIZE_STRIPPED);

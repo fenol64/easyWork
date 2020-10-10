@@ -14,7 +14,7 @@
         <form action="<?=site().'/login'?>" method="post" id="login_form">
             <input type="email" name="email" id="email"  name="email" class="w-100 my-input" placeholder="Digite seu email">
             <input type="password" name="passwd" id="passwd" name="passwd" class="w-100 my-input mb-2" placeholder="Digite sua senha">
-            <a href="" class="w-100 pt-3 pb-3"> esqueceu a senha? </a>
+            <a href="<?= site() .'/recuperar' ?>" class="w-100 pt-3 pb-3"> esqueceu a senha? </a>
             <button id="send" class="btn-lg btn-primary w-100 mt-2">entrar</button>
         </form>
         <div class="midias mt-4">

@@ -13,19 +13,31 @@ $router->namespace('Source\App');
 /*
  * WEB
  */
-
+$router->group(null);
 $router->get("/", "Web:index", "web.index");
 $router->get("/parceiros", "Web:partners", "web.partners");
 $router->get("/servicos/{service}", "Web:services", "web.services");
 $router->get("/termos", "Web:terms", "web.terms");
 $router->get("/login", "Web:login", "web.login");
+$router->get("/recuperar", "Web:forget", "web.forget");
+$router->get("/senha/{email}/{forget_id}", "Web:reset", "web.reset");
 $router->get("/cadastro", "Web:cadastrar", "web.cadastrar");
 
 /*
  * WEB POST ROUTES
  */
+$router->group(null);
 $router->post("/login", "Auth:login", "auth.login");
 $router->post("/register", "Auth:register", "auth.register");
+$router->post("/forget", "Auth:forget", "auth.forget");
+$router->post("/reset", "Auth:reset", "auth.reset");
+
+/*
+ * dashboards
+ */
+$router->group('dash');
+$router->get("/", "Dash:index", "dash.index");
+
 /*
  * SOCIAL
  */
