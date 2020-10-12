@@ -6,6 +6,7 @@ use League\OAuth2\Client\Provider\FacebookUser;
 use League\OAuth2\Client\Provider\Google;
 use League\OAuth2\Client\Provider\GoogleUser;
 use Source\Models\User;
+use Source\Models\Partner;
 use Source\Support\Email;
 class Auth extends Controller {
 
@@ -17,7 +18,6 @@ class Auth extends Controller {
     public function register(array $data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
-        $type = 'u';
 
         $user = new User();
         $user->nome = $data["nome"];
@@ -27,7 +27,7 @@ class Auth extends Controller {
         $user->cpf = $data["cpf"];
         $user->email = $data["email"];
         $user->passwd = $data["passwd"];
-        $user->tipo = $type;
+        $user->tipo = $data['type'];
 
 
         $this->socialValidate($user);
@@ -40,13 +40,56 @@ class Auth extends Controller {
             return;
         }
 
-        $_SESSION["user"] = $user->id;
-        flash('bg-info', 'cadastro efetuado com sucesso!');
+        $_SESSION["user"] = $user->id_user;
+        
+        $url = null;
+        
+        if ($user->tipo == 'P') {
+            flash('bg-info', 'Complete seu cadastro para se tornar um parceiro');
+            $url = $this->router->route("web.cadastrarPartner");
+        } else {
+            flash('bg-info', 'cadastro efetuado com sucesso!');
+            $url = $this->router->route("dash.index");
+        }
+        
         echo $this->ajax("redirect", [
-            "url" => $this->router->route("dash.index")
+            "url" => $url
         ]);
     }
 
+    public function registerPartner($data)
+    {
+        if ($_FILES) {
+            $file = $_FILES['image'];
+            $name_file = uniqid().$file["name"];
+            if (move_uploaded_file($file["tmp_name"], "C:\\xampp\\htdocs\\Projects\\easyWork\\src\\shared\\".$name_file)) { 
+                $user = (new User)->findById($_SESSION["user"]); 
+                $user->profile_pic = $name_file;
+                $user->save();
+                return;
+            }   
+        }
+        
+        $partner = new Partner();
+        $partner->id_user = $_SESSION["user"];
+        $partner->imei = $data["mei"];
+        $partner->capable = $data["capable"];
+        $partner->is_online = true;
+        $partner->plano = 'free';
+
+        if (!$partner->save()) {
+            echo $partner->fail()->getMessage();
+        } else {
+            flash('bg-info', 'cadastro efetuado com sucesso!');
+            $url = $this->router->route("dash.index");
+            echo $this->ajax("redirect", [
+                "url" => $url
+            ]);
+        }
+
+ 
+
+    }
 
     public function login($data)
     {
@@ -73,7 +116,7 @@ class Auth extends Controller {
 
         $this->socialValidate($user);
 
-        $_SESSION["user"] = $user->id;
+        $_SESSION["user"] = $user->id_user;
 
         $redirectType = '';
 

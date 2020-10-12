@@ -29,6 +29,7 @@
 
         <div class="col text-center">
             <form action="<?= site().'/register' ?>" enctype="multipart/form-data">
+                <input type="hidden" name="type" value="<?=$type?>">
                 <div class="row ">
                     <div class="col mt-4">
                         

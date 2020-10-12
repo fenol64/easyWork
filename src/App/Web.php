@@ -48,6 +48,7 @@ class Web extends Controller
 
     public function cadastrar()
     {
+        $type = isset($_GET["type"]) == 'P' ? 'P' : 'U';
 
         $form_user = new \stdClass();
         $form_user->nome = null;
@@ -65,13 +66,21 @@ class Web extends Controller
 
         echo $this->view->render("themes/auth/cadastro", [
             'title' => site('name'). ' | Cadastre-se!',
-            'data' => $form_user
+            'data' => $form_user,
+            'type' => $type
+        ]);
+    }
+
+    public function cadastrarPartner()
+    {
+        echo $this->view->render("themes/auth/cadastro-partner", [
+            'title' => site('name'). ' | Complete seu cadastro!',
+            'id_user' => $_SESSION["user"]
         ]);
     }
 
     public function login()
     {
-
         echo $this->view->render("themes/auth/login", [
             'title' => site('name'). ' | Faça o login!'
         ]);

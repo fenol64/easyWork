@@ -1,0 +1,45 @@
+.image_preview {
+    margin-left: calc(50% - 50px);
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #888;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.main {
+    width: 90vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 600px;
+}
+
+.todo-name {
+    width: 88%;
+}
+
+.todos-body {
+    margin-top: 5px;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 600px;
+    border: 1px solid #cecece
+}
+
+.todos-body li {
+    margin: 5px;
+}
+
+.todos-body li a {
+    margin-left: 3px;
+}

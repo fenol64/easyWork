@@ -1,11 +1,11 @@
 <?php 
 namespace Source\Models;
-use Source\Models\User;
+use CoffeeCode\DataLayer\DataLayer;
 
 /**
  * Partner
  */
-class Partner extends User
+class Partner extends Datalayer
 {     
      /**
       * __construct
@@ -14,7 +14,7 @@ class Partner extends User
       */
      function __construct() {
         parent::__construct("partner", [
-            "creator",
+            "imei",
             "capable"
         ], 'id_partner', true);
     }
