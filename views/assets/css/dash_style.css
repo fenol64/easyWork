@@ -6,8 +6,7 @@
     width: 200px;
     height: 100vh;
     background-color: #4a91ee;
-    font-weight: 900;
-    color:#fff;
+
     font-size: 15px;
 }
 .sidebar ul {
@@ -17,6 +16,7 @@
 .sidebar ul li {
     padding: 10px 5px 10px 5px;
     border-radius: 10px 0 0 10px;
+    color:#fff;
 }
 
 .sidebar ul .item:hover {
@@ -27,9 +27,9 @@
     margin-left: 10px;
 }
 
-.item_active {
+.active {
     background-color: #fff;
-    color: #4a91ee; 
+    color: #4a91ee !important ; 
 }
 
 .round-avatar {

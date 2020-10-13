@@ -22,15 +22,15 @@
     <div class="main">
       <?php if ($user->tipo != 'U'): ?>
         <nav class="sidebar">
-          <ul>
+          <ul id="listnav">
             <li class="photo pt-5 pb-4">
               <div class="round-avatar" style="background-image: url(<?= $photo ?>) ">
               </div>
             </li>
-            <li>
+            <li class="font-weight-bold">
               Olá, <?= $user->nome ?>
             </li>
-            <li class="item">
+            <li class="item active">
               Inicio
             </li>
             <?php if ($user->tipo == 'A'): ?>
@@ -78,6 +78,7 @@
                   Suporte
                 </li>
             <?php endif ?>
+            <a href="<?= $router->route("dash.logoff"); ?>" class="btn btn-danger"> Sair </a>
           </ul>    
         </nav>
       <?php endif ?> 
@@ -93,5 +94,19 @@
     <?php if ($v->section("scripts")): ?>
       <?= $v->section("scripts"); ?>
     <?php endif; ?>
+    <script>
+        var header = document.getElementById("listnav");
+        var btns = header.getElementsByClassName("item");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function() {
+
+          var current = document.getElementsByClassName("active");
+          if (current.length > 0) { 
+            current[0].className = current[0].className.replace(" active", "");
+          }
+          this.className += " active";
+          });
+        }
+    </script>
   </body>
 </html>

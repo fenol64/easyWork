@@ -279,7 +279,7 @@ class Auth extends Controller {
 
         if ($userById) {
             unset($_SESSION["facebook_auth"]);
-            $_SESSION["user"] = $userById->id;
+            $_SESSION["user"] = $userById->id_user;
             $this->router->redirect("dash.index");    
         }
 
@@ -333,8 +333,8 @@ class Auth extends Controller {
         $user_by_id = (new User)->find("google_id = :id", "id={$google_user->getId()}")->fetch();
         if ($user_by_id) {
             unset($_SESSION["google_auth"]);
-            $_SESSION["user"] = $user_by_id->id;
-            //$this->router->redirect("app.home");
+            $_SESSION["user"] = $user_by_id->id_user;
+            $this->router->redirect("dash.index");
         }
 
         // LOGIN BY EMAIL
