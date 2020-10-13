@@ -13,7 +13,7 @@
                     <a href="<?= $router->route('web.partners') ?>">Parceiros</a>
                 </li>
                 <li class="nav-list-item">
-                    <a href="<?= $router->route('web.services', ['service' => '1']) ?>">Serviços</a>
+                    <a href="<?= $router->route('web.services', ['service' => 'serviços-gerais']) ?>">Serviços</a>
                 </li>
                 <li class="nav-list-item">
                     <a href="#sobrenos">Sobre</a>
