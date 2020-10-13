@@ -19,7 +19,8 @@
         <?= flash() ?>
     </div>
     <nav class="sidebar">
-        
+        <img src="<?= $user[2] ?>">
+        <?= $user[0]; $user[2] ?>
     </nav>
     <?= $v->section("content"); ?>
     <!-- Optional JavaScript -->

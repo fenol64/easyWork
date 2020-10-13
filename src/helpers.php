@@ -40,6 +40,11 @@ function flash(string $type = null, string $message = null): ?string
     return null;
 }
 
+function getProfilePic(String $pic)
+{
+	return SITE["base_url"]."/src/shared/{$pic}";
+}
+
 function validaCPF($cpf = null) {
 
 	// Verifica se um número foi informado
@@ -87,8 +92,5 @@ function validaCPF($cpf = null) {
 	}
 
 
-	function getProfilePic($pic)
-	{
-        return site()."/src/shared/{$pic}";
-    }
+
 }
