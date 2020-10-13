@@ -14,24 +14,21 @@ class Dash extends Controller {
     {
 
         $user = (new User())->find("id_user = :i", "i={$_SESSION["user"]}")->fetch();
-
-        $data = [
-            $user->nome,
-            $user->Snome,
-        ];
-
+        $photo = null;
         if (filter_var($user->profile_pic, FILTER_VALIDATE_URL)) {
-            $data[] = $user->profile_pic;
+            $photo = $user->profile_pic;
         } else if ($user->profile_pic === 'avatar.png') {
-            $data[] = getProfilePic('avatar.png'); 
+            $photo = getProfilePic('avatar.png'); 
         } else {
-            $data[] = getProfilePic($user->profile_pic); 
+            $photo = getProfilePic($user->profile_pic); 
         }
 
 
         echo $this->view->render("themes/dash/dash_principal", [
             'title' => site('name'). ' | Dashboard!',
-            'user' => $data
+            'user' => $user,
+            'photo' => $photo,
+            'type' => $user->tipo
         ]);
     }
 }

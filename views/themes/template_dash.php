@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?=asset('css/libs/bootstrap.min.css')?>">
     <link rel="stylesheet" href="<?=asset('css/web_style.css')?>">
+    <link rel="stylesheet" href="<?=asset('css/dash_style.css')?>">
     <?php if ($v->section("css")): ?>
       <?= $v->section("css"); ?>
     <?php endif; ?>
@@ -18,12 +19,71 @@
     <div class="call_back">
         <?= flash() ?>
     </div>
-    <nav class="sidebar">
-        <img src="<?= $user[2] ?>">
-
-        <?= $user[0] ?>
-    </nav>
-    <?= $v->section("content"); ?>
+    <div class="main">
+      <?php if ($user->tipo != 'U'): ?>
+        <nav class="sidebar">
+          <ul>
+            <li class="photo pt-5 pb-4">
+              <div class="round-avatar" style="background-image: url(<?= $photo ?>) ">
+              </div>
+            </li>
+            <li>
+              Olá, <?= $user->nome ?>
+            </li>
+            <li class="item">
+              Inicio
+            </li>
+            <?php if ($user->tipo == 'A'): ?>
+              <li class="item">
+                Categorias
+              </li>
+              <li class="item">
+                Usuários
+              </li>
+              <li class="item">
+                Posts
+              </li>
+              <li class="item">
+                Financeiro
+              </li>
+              <li class="item">
+                Destaques
+              </li>
+              <div class="dropdown-divider"></div>
+              <li class="item">
+                Suporte
+              </li>
+            <?php endif ?>
+            <?php if ($user->tipo == 'P'): ?>
+                <li class="item ">
+                  Avaliações
+                </li>
+                <li class="item">
+                  Financeiro
+                </li>
+                <li class="item">
+                  Serviços
+                </li>
+                <li class="item">
+                  Horários
+                </li>
+                <li class="item">
+                  Formas de Pagamento
+                </li>
+                <div class="dropdown-divider"></div>
+                <li class="item">
+                  Perfil
+                </li>
+                <li class="item">
+                  Suporte
+                </li>
+            <?php endif ?>
+          </ul>    
+        </nav>
+      <?php endif ?> 
+      <div class="right-container"><?= $v->section("content"); ?></div>
+    </div>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?=asset('js/libs/jquery.js')?>"></script>

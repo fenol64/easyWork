@@ -48,13 +48,13 @@
                     <h2 class="mb-3">Freemium</h2>
                     <img src="<?= asset('img/icons/card.png') ?>">
                     <span class="font-weight-bold">GRÁTIS</span>
-                    <a class="btn btn-primary"> assine </a>
+                    <a href="<?= site().'/login' ?>" class="btn btn-primary"> assine </a>
                 </div>
                 <div class="box-plan">
                     <h2 class="mb-3">Premium</h2>
                     <img src="<?= asset('img/icons/crown.png') ?>">
                     <span class="font-weight-bold mt-2 mb-3">R$ 5,99</span>
-                    <a class="btn btn-primary"> assine </a>
+                    <a href="<?= site().'/login' ?>" class="btn btn-primary"> assine </a>
                 </div>
             </div>
         </article>

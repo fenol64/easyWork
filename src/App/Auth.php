@@ -178,9 +178,14 @@ class Auth extends Controller {
             ]),
             "{$user->first_name} {$user->last_name}",
             $user->email
-        )->send();
+        );
 
-        flash("bg-info", "Enviamos um link no seu email para você redefinir sua senha!");
+        if ($email->send()) {
+            flash("bg-info", "Enviamos um link no seu email para você redefinir sua senha!");
+        }else {
+            flash("bg-danger", "O sistema está fora do ar, por favor tente mais tarde!"); 
+        }
+        
 
         echo $this->ajax("redirect", [
             "url" => $this->router->route("web.forget")

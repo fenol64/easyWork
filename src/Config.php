@@ -42,7 +42,7 @@
         "host" => "smtp.sendgrid.net",
         "port" => "587",
         "user" => "apikey",
-        "passwd" => "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",
+        "passwd" => "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",
         "from_name" => "EasyWork",
         "from_email" => "thebrotherspf@gmail.com"
     ]);
