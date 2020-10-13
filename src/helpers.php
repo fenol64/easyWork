@@ -85,4 +85,10 @@ function validaCPF($cpf = null) {
 
 		return true;
 	}
+
+
+	function getProfilePic($pic)
+	{
+        return site()."/src/shared/{$pic}";
+    }
 }
