@@ -26,7 +26,7 @@ class Auth extends Controller {
         $user->bio = $data["bio"];
         $user->cpf = $data["cpf"];
         $user->email = $data["email"];
-        $user->passwd = $data["passwd"];
+        $user->passwd = md5($data["passwd"]);
         $user->tipo = $data['type'];
 
 
@@ -186,10 +186,12 @@ class Auth extends Controller {
             flash("bg-danger", "O sistema está fora do ar, por favor tente mais tarde!"); 
         }
         
-
+        var_dump($email);
+        /*
         echo $this->ajax("redirect", [
             "url" => $this->router->route("web.forget")
         ]);
+        */
     }
 
 
@@ -246,6 +248,8 @@ class Auth extends Controller {
     public function facebook(): void
     {
 
+        $type = $_GET["type"];
+        
         $facebook = new Facebook(FACEBOOK_LOGIN);
         $error = filter_input(INPUT_GET, "error", FILTER_SANITIZE_STRIPPED);
         $code = filter_input(INPUT_GET, "code", FILTER_SANITIZE_STRIPPED);
@@ -294,7 +298,7 @@ class Auth extends Controller {
             "bg-info", 
             "Olá {$facebook_user->getFirstName()}, se ja tem conta clique em <a href='{$link}'>FAZER LOGIN</a> ou complete seu cadastro"
         );
-        $this->router->redirect("web.cadastrar");
+        $this->router->redirect("web.cadastrar", ["type" => $type]);
     }
 
     public function google(): void

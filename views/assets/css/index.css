@@ -57,11 +57,18 @@
     padding: 15px;
     background-color: #fff;
     border-radius: 5px 0 0 5px;
+    
 }
 
 .input-header {
     border: none;
     padding: 12px;
+    border-radius: 0 5px 5px 0;   
+   
+}
+
+.input-header:focus {
+    outline: solid #1A73EA thin;
     border-radius: 0 5px 5px 0;
 }
 

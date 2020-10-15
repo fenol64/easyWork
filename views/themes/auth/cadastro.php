@@ -8,20 +8,24 @@
     </a>
 </div>
 <div class="container-fluid">
-    <div class="midia">
-        <div class=" mb-4 mr-5 midia-box">
-            <a href="<?=$router->route('auth.google') ?>">
-                <img src="<?= asset('img/icons/google-logo.png') ?>" width="30">
-                cadastrar com o google
-            </a>
-        </div>
-        <div class="midia-box facebook">
-            <a href="<?=$router->route('auth.facebook') ?>">
-                <img src="<?= asset('img/icons/facebook-logo.png') ?>" width="30">
-                cadastrar com o facebook
-            </a>
-        </div>
+    <?php if ($type == "U") :?>
+        <div class="midia">
+            <div class=" mb-4 mr-5 midia-box">
+                <a href="<?=$router->route('auth.google', ["type" => $type]) ?>">
+                    <img src="<?= asset('img/icons/google-logo.png') ?>" width="30">
+                    cadastrar com o google
+                </a>
+            </div>
+            <div class="midia-box facebook">
+                <a href="<?=$router->route('auth.facebook', ["type" => $type]) ?>">
+                    <img src="<?= asset('img/icons/facebook-logo.png') ?>" width="30">
+                    cadastrar com o facebook
+                </a>
+            </div>
     </div>
+    <?php else: ?>
+        <h3 class="text-center">Cadastre já e veja <span class="blue-bg">todos os serviços</span> que estão disponíveis para você! </h3>
+    <?php endif; ?>
     <div class="row">
         <div class="col-3 text-left">
                 <img src="<?=asset('img/img-signup-left.png')  ?>" class="mr-5">

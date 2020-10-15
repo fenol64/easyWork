@@ -19,7 +19,7 @@
                     <a href="#sobrenos">Sobre</a>
                 </li>
                 <li class="nav-list-item">
-                    <a href="<?= $router->route('web.cadastrar') ?>">cadastrar</a>
+                    <a href="<?= $router->route('web.cadastrar', ['type' => "U"]) ?>">cadastrar</a>
                 </li>
                 <li class="nav-list-item mr-5">
                     <a href="<?= $router->route('web.login') ?>">

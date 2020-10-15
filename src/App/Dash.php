@@ -12,7 +12,7 @@ class Dash extends Controller {
 
         if (empty($_SESSION["user"]) || !$this->user = (new User())->findById($_SESSION["user"])) {
             unset($_SESSION["user"]);
-            flash("info", "Acesso negado. por favor logue-se");
+            flash("bg-info", "Acesso negado. por favor logue-se");
             $this->router->redirect("web.login");
         }
     }
@@ -22,16 +22,12 @@ class Dash extends Controller {
     {
 
         $user = (new User())->find("id_user = :i", "i={$_SESSION["user"]}")->fetch();
-        $photo = null;
-        if (filter_var($user->profile_pic, FILTER_VALIDATE_URL)) {
-            $photo = $user->profile_pic;
-        } else if ($user->profile_pic === 'avatar.png') {
-            $photo = getProfilePic('avatar.png'); 
-        } else {
-            $photo = getProfilePic($user->profile_pic); 
-        }
 
-        $type = $user->tipo == 'P' ? 'partner' : ($user->tipo == 'U' ? 'user' : 'admin');
+        $photo = filter_var($user->profile_pic, FILTER_VALIDATE_URL) ? 
+                 $user->profile_pic : getProfilePic($user->profile_pic); ;
+    
+        $type = $user->tipo == 'P' ? 'partner' :
+                ($user->tipo == 'U' ? 'user' : 'admin');
 
         echo $this->view->render("themes/dash/dash_{$type}", [
             'title' => site('name'). ' | Dashboard!',

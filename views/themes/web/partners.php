@@ -13,7 +13,7 @@
             <div class="text h1 ml-5 font-weight-bold margin-top-header">
                 Consiga <span class="blue-bg">mais clientes</span> direto <br> do seu celular.
                 <p>
-                <a href="<?= $router->route('web.cadastrar') ?>?type=P" class="btn btn-lg btn-outline-primary mt-5"> 
+                <a href="<?= $router->route('web.cadastrar' , ['type' => "P"]) ?>" class="btn btn-lg btn-outline-primary mt-5"> 
                     Cadastrar seus serviços
                 </a>
             </div>

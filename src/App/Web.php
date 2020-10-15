@@ -48,7 +48,7 @@ class Web extends Controller
 
     public function cadastrar()
     {
-        $type = isset($_GET["type"]) == 'P' ? 'P' : 'U';
+        $type = isset($_GET["type"]) &&  $_GET["type"] == 'P' ? 'P' : 'U' ;
 
         $form_user = new \stdClass();
         $form_user->nome = null;

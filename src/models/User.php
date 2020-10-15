@@ -81,8 +81,6 @@ class User extends DataLayer
             $this->fail = new Exception("Informe uma senha com pelo menos 5 caracteres.");
             return false;
         }
-        
-        $this->passwd = md5($this->passwd);
         return true;
     }
 
