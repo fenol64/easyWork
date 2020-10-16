@@ -1,6 +1,7 @@
 <?php
 namespace Source\App;
 use Source\Models\User;
+use Source\Models\Posts;
 
 class Dash extends Controller {
 
@@ -42,6 +43,19 @@ class Dash extends Controller {
         unset($_SESSION["user"]);
         flash("bg-info", "Você saiu com sucesso!, volte logo {$this->user->nome}");
         $this->router->redirect("web.login");
+    }
+
+    public function getService($data)
+    {
+        $type = filter_var($data["type"], FILTER_SANITIZE_STRIPPED);
+
+        $posts = (new Posts)
+                    ->find("status_post=:type AND creator = :c", "type={$type}&c={$this->user->id_user}")
+                    ->fetch(true);
+        
+        var_dump($posts);
+
+
     }
 
 

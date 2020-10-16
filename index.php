@@ -39,7 +39,13 @@ $router->post("/reset", "Auth:reset", "auth.reset");
  */
 $router->group('dash');
 $router->get("/", "Dash:index", "dash.index");
+$router->get('/new-service', "Dash:newService", "dash.newService");
 $router->get('/logout', "Dash:logoff", "dash.logoff");
+
+/*
+ * dashboards POST routes
+ */
+$router->post('/getService', "Dash:getService", "dash.getservice");
 
 /*
  * SOCIAL
