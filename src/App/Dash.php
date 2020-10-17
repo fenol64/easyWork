@@ -53,9 +53,58 @@ class Dash extends Controller {
                     ->find("status_post=:type AND creator = :c", "type={$type}&c={$this->user->id_user}")
                     ->fetch(true);
         
-        var_dump($posts);
+        if (!$posts) {
+            echo json_encode(
+                array(
+                    "erro" => "Você ainda não tem serviços nesta area, peça um!"
+                )
+            );
+            return;
+        }
 
 
+        $data = [];
+        
+        foreach ($posts as $post) {
+
+            $message = $post->status_post == 'met' ? 'Esperando por um profissional' : 
+                     ($post->status_post == 'pending' ? 'Finalizar' : 'Finalizado');
+
+            $data[] = array(
+                $post->data(),
+                $post->getPartner(),
+                $message
+            );
+        }
+        
+        echo json_encode($data);
+    }
+
+    public function detailService($data)
+    {
+        $posts = (new Posts)
+                    ->find("id_post = :pid", "pid={$data["id_post"]}")
+                    ->fetch(true);
+
+        $data = [];
+
+        
+
+        foreach ($posts as $post) {
+             
+            $message = $post->status_post == 'met' ? 'Esperando por um profissional' : 
+                        ($post->status_post == 'pending' ? 'Finalizar' : 'Finalizado');
+
+            $data[] = array(
+                $post->data(),
+                $post->getPartner(),
+                $message,
+                stringToArray($post->categories)
+            );
+        }
+
+        echo json_encode($data);
+                
     }
 
 

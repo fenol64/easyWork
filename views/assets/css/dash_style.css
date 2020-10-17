@@ -90,10 +90,10 @@ body {
     color: #000000;
 }
 
-a:hover {
+.active_user, .navbar_link:hover {
     text-decoration: none;
     border-bottom: 2px solid #4a91ee;
-    color: #4a91ee;
+    color: #4a91ee !important;
 }
 
 .radius {
@@ -108,4 +108,22 @@ a:hover {
 
 .service_container {
     width: 350px;
+}
+
+.box_user_service {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.message_user {
+    font-weight: 600;
+}
+
+.tag {
+    padding: 3px 5px;
+    border-radius: 10px;
+    background-color: #4a91ee;
+    color: #fff;
 }
