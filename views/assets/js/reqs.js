@@ -13,6 +13,14 @@ $(function () {
                 'capable': JSON.stringify(todos)
             }
         }
+
+        if (action === 'https://localhost/Projects/easyWork/dash/addService') {
+            var data = {
+                'title': $('#title').val(),
+                'description': $('#description').val(),
+                'capable': JSON.stringify(todos)
+            }
+        }
         console.log(data)
         $.ajax({
             url: action,

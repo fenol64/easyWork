@@ -46,6 +46,7 @@ $router->get('/logout', "Dash:logoff", "dash.logoff");
  * dashboards POST routes
  */
 $router->post('/getService', "Dash:getService", "dash.getservice");
+$router->post('/addService', "Dash:addService", "dash.addservice");
 $router->post('/detailService', "Dash:detailService", "dash.detailService");
 /*
  * SOCIAL

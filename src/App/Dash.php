@@ -45,6 +45,36 @@ class Dash extends Controller {
         $this->router->redirect("web.login");
     }
 
+    public function newService()
+    {
+        echo $this->view->render("themes/dash/items_dash/newService", [
+            'title' => site('name'). ' | Contrate um profissional!'
+        ]);
+    }
+
+    public function addService($data)
+    {
+        $post = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+        
+        $posts = new Posts();
+        $posts->creator = $this->user->id_user;
+        $posts->post_head = $data["title"];
+        $posts->post_body = $data["description"];
+        $posts->categories = $data["capable"];
+        $posts->status_post = 'met';
+
+        if ($posts->save()) {
+
+            echo $this->ajax("redirect", [
+                "url" => $this->router->route('dash.index')
+            ]);
+        }else {
+            echo "não foi possivel salvar: {$posts->fail()->getMessage()}";
+            
+        }
+        
+    }
+
     public function getService($data)
     {
         $type = filter_var($data["type"], FILTER_SANITIZE_STRIPPED);
@@ -54,15 +84,9 @@ class Dash extends Controller {
                     ->fetch(true);
         
         if (!$posts) {
-            echo json_encode(
-                array(
-                    "erro" => "Você ainda não tem serviços nesta area, peça um!"
-                )
-            );
+            echo json_encode(array("erro" => "Você ainda não tem serviços nesta area, peça um!"));
             return;
         }
-
-
         $data = [];
         
         foreach ($posts as $post) {

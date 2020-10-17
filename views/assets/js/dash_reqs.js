@@ -46,7 +46,7 @@
         $('#desc_partner').html(data[0][1]["bio"])
     }
 
-    $('#andamento').toggleClass("active_user")
+    $('#agendado').toggleClass("active_user")
 
     $('#agendado').on('click', () => {
        makeReq('met')
@@ -60,6 +60,7 @@
        $('#agendado').removeClass("active_user")
        $('#andamento').addClass("active_user")
        $('#finalizado').removeClass("active_user")
+
     })
 
     $('#finalizado').on('click', () => {
@@ -68,5 +69,8 @@
        $('#andamento').removeClass("active_user")
        $('#finalizado').addClass("active_user")
     })
+    makeReq('met')
 
-    makeReq('pending')
+    setInterval(() => {
+        makeReq('met')
+    }, 10000);

@@ -17,8 +17,7 @@ class Posts extends DataLayer
         parent::__construct("posts", [
             "post_head",
             "post_body",
-            "categories",
-            "professional"
+            "categories"
         ], 'id_post', true);
     }
 

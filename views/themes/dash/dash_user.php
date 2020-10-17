@@ -22,10 +22,7 @@
 <main class="flex_main_services">
     <div class="service_container">
         <a href="<?= $router->route('dash.newService') ?>" class="btn btn-success mt-4" style="width:100%;"> Solicitar serviço </a>
-        <div id="root">
-
-        </div>
-        
+        <div id="root"></div>
     </div>
 </main>
 
