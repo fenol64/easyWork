@@ -47,7 +47,7 @@ body {
 }
 
 .right-container {
-    max-width: calc(100vw - 300px);
+    width: calc(100vw - 215px);
 }
 
 .flex-container {
@@ -126,4 +126,14 @@ body {
     border-radius: 10px;
     background-color: #4a91ee;
     color: #fff;
+}
+
+.box_dash {
+    background-color: #fff;
+    height: 100px;
+}
+
+
+#chart {
+    height: 180px !important;
 }

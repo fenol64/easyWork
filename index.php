@@ -48,6 +48,16 @@ $router->get('/logout', "Dash:logoff", "dash.logoff");
 $router->post('/getService', "Dash:getService", "dash.getservice");
 $router->post('/addService', "Dash:addService", "dash.addservice");
 $router->post('/detailService', "Dash:detailService", "dash.detailService");
+
+/*
+ *  Admin get routes frames
+ */
+
+$router->group('admin');
+$router->get('/getView', 'Admin:getView', 'Admin.getview');
+$router->get('/getChart', 'Admin:createChart', 'Admin.createChart');
+
+
 /*
  * SOCIAL
  */

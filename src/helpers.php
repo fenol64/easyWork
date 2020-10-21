@@ -57,3 +57,7 @@ function stringToArray($string)
 }
 
 
+function geturl(String $url) {
+    return str_replace(' ', '-', $url);
+}
+

@@ -24,7 +24,7 @@
         <nav class="sidebar">
           <ul id="listnav">
             <li class="photo pt-5 pb-4">
-              <div class="round-avatar" style="background-image: url(<?= $photo ?>) ">
+              <div class="round-avatar" style="background-image: url(<?= $photo ?>);background-position:top;background-size:cover;">
               </div>
             </li>
             <li class="font-weight-bold">
@@ -82,7 +82,7 @@
           </ul>    
         </nav>
       <?php endif ?> 
-      <div class="right-container"><?= $v->section("content"); ?></div>
+      <div class="right-container border"><?= $v->section("content"); ?></div>
     </div>
     
     <!-- Optional JavaScript -->
@@ -97,15 +97,25 @@
     <script>
         var header = document.getElementById("listnav");
         var btns = header.getElementsByClassName("item");
+        
+        $.get('https://localhost/Projects/easyWork/admin/getView', {'view': 'Inicio'} , view => {
+                  $('.result').html(view)
+        })
         for (var i = 0; i < btns.length; i++) {
           btns[i].addEventListener("click", function() {
 
-          var current = document.getElementsByClassName("active");
-          if (current.length > 0) { 
-            current[0].className = current[0].className.replace(" active", "");
-          }
-          this.className += " active";
-          });
+            var current = document.getElementsByClassName("active");
+
+            if (current.length > 0) { 
+              current[0].className = current[0].className.replace(" active", "");
+            } 
+              this.className += " active";
+
+              $.get('https://localhost/Projects/easyWork/admin/getView', {'view': this.innerText} , view => {
+                  $('.result').html(view)
+              })
+            }
+          );
         }
     </script>
   </body>

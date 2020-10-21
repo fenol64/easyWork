@@ -33,7 +33,7 @@ class Web extends Controller
 
         $search = (new Categories())->find("type_category = :c", "c={$service}")->fetch(true);
 
-        $name = str_replace('-', ' ', $service);
+        $name = geturl($service);
 
         if (!$search) {
             $search = 'Não existe serviços cadastrados com esse nome!';

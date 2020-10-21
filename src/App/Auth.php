@@ -185,13 +185,12 @@ class Auth extends Controller {
         }else {
             flash("bg-danger", "O sistema está fora do ar, por favor tente mais tarde!"); 
         }
-        
-        var_dump($email);
-        /*
+
+
         echo $this->ajax("redirect", [
             "url" => $this->router->route("web.forget")
         ]);
-        */
+     
     }
 
 
@@ -221,7 +220,7 @@ class Auth extends Controller {
             return;
         }
 
-        $user->passwd = $data["password"];
+        $user->passwd = md5($data["password"]);
         $user->forget = null;
         if (!$user->save()) {
             echo $this->ajax("message", [
