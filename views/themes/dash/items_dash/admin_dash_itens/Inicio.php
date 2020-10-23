@@ -26,7 +26,10 @@
         </div>
     </div>
     <div class="w-100"></div>
-    <div class="col">
+    <div class="col mt-5">
+        <div class="h4">
+        Desempenho da semana:
+        </div>
         <div id="chart">
             <canvas id="myChart"></canvas>
         </div>
@@ -36,7 +39,9 @@
 <script>
       $.get('https://localhost/Projects/easyWork/admin/getChart', res => {
 
+        var chart = document.getElementById('chart')
         var ctx = document.getElementById('myChart').getContext('2d');
+        
         let data = JSON.parse(res)
         let label = []
         let days = []
@@ -75,6 +80,8 @@
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -86,5 +93,4 @@
         });
     })  
 
-   
 </script>

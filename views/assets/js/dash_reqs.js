@@ -12,7 +12,7 @@
             $('#root').html(`<div class="text-center h2 mt-5">${data["erro"]}</div>`)
             return;
         }
-        console.log(data)
+
         data.forEach(element => {
             $('#root').append(`
                 <div class="box_user_service p-2 pl-3 mt-3" onclick="post_spec(${element[0]["id_post"]})"  data-toggle="modal" data-target="#exampleModal">

@@ -58,6 +58,10 @@ $router->get('/getView', 'Admin:getView', 'Admin.getview');
 $router->get('/getChart', 'Admin:createChart', 'Admin.createChart');
 
 
+
+$router->post('/AddCategory', "Admin:AddCategory", "admin.addcategory");
+$router->post('/delCategory', "Admin:delCategory", "admin.delCategory");
+
 /*
  * SOCIAL
  */

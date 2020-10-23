@@ -110,6 +110,18 @@ body {
     width: 350px;
 }
 
+.message {
+    width: 250px;
+    padding: 15px;
+    position: absolute;
+    top: 5%;
+    left: 80%;
+    z-index: 9999;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+  }
+
 .box_user_service {
     width: 100%;
     background-color: #fff;
@@ -135,5 +147,5 @@ body {
 
 
 #chart {
-    height: 180px !important;
+    height: calc(100vh - 200px) !important;
 }
