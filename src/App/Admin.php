@@ -124,4 +124,32 @@ class Admin extends Controller
             "users" => $users
         ]);
     }
+
+    public function BanUser($data)
+    {
+        $user = (new User)->findById(intval($data["id_user"]));
+
+        if ($user->status_acc == 'ok') {
+            $user->status_acc = 'baned';
+            if ($user->save()) {
+                echo json_encode(array(
+                    "ok" => "Desbanir"
+                ));
+            }
+        } else {
+            $user->status_acc = 'ok';
+            if ($user->save()) {
+                echo json_encode(array(
+                    "ok" => "Banir"
+                ));
+            }
+        }
+    }
+
+
+    public function Posts()
+    {
+        
+    }
+
 }

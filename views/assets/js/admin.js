@@ -1,5 +1,5 @@
 function delete_modals(id_category) {
-    console.log(id_category)
+    
     if (confirm("Você realmente deseja deletar essa categoria?")) {
         $.post('https://localhost/Projects/easyWork/admin/delCategory', { category: id_category }, res => {
             data = JSON.parse(res);
@@ -27,6 +27,15 @@ function delete_modals(id_category) {
                 `)
             });
 
+        })
+    }
+}
+
+function banUser(id_user) {
+    if (confirm("Você realmente deseja Banir este usuário?")) {
+        $.post('https://localhost/Projects/easyWork/admin/BanUser', { id_user }, res => {
+            data = JSON.parse(res)
+            $(`#${id_user}`).html(data["ok"])
         })
     }
 }
