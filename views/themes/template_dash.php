@@ -43,12 +43,6 @@
               <li class="item">
                 Posts
               </li>
-              <li class="item">
-                Financeiro
-              </li>
-              <li class="item">
-                Destaques
-              </li>
               <div class="dropdown-divider"></div>
               <li class="item">
                 Suporte

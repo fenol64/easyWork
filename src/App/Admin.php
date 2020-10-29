@@ -149,7 +149,31 @@ class Admin extends Controller
 
     public function Posts()
     {
-        
+        $posts = (new Posts)->find()->fetch(true);
+
+        $data = [];
+
+        if (!$posts) {
+           flash("bg-info", 'Não há posts cadastrados!');
+        }else {
+            foreach ($posts as $post) {
+                $data[] = $post->data();
+            }
+        }
+
+
+        echo $this->view->render("themes/dash/items_dash/admin_dash_itens/Posts", ["posts" => $data]);
     }
+
+
+
+
+
+
+
+
+
+
+
 
 }
