@@ -26,7 +26,6 @@ function delete_modals(id_category) {
                     </tr>
                 `)
             });
-
         })
     }
 }
@@ -36,6 +35,15 @@ function banUser(id_user) {
         $.post('https://localhost/Projects/easyWork/admin/BanUser', { id_user }, res => {
             data = JSON.parse(res)
             $(`#${id_user}`).html(data["ok"])
+        })
+    }
+}
+
+function banPost(id_post) {
+    if (confirm("Você realmente deseja tirar esse post do ar?")) {
+        $.post('https://localhost/Projects/easyWork/admin/BanPost', { id_post }, res => {
+            data = JSON.parse(res)
+            $(`#${id_post}`).html(data["ok"])
         })
     }
 }

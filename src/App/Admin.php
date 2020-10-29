@@ -160,9 +160,29 @@ class Admin extends Controller
                 $data[] = $post->data();
             }
         }
-
-
         echo $this->view->render("themes/dash/items_dash/admin_dash_itens/Posts", ["posts" => $data]);
+    }
+
+    public function BanPost($id)
+    {
+        $post = (new Posts)->findById($id["id_post"]);
+
+        if ($post->status_post != 'ban') {
+            $post->status_post = 'ban';
+            if ($post->save()) {
+                echo json_encode(array(
+                    "ok" => "Revogar Banimento"
+                ));
+            }
+        } else {
+            $post->status_post = 'met';
+            if ($post->save()) {
+                echo json_encode(array(
+                    "ok" => "Denunciar Post"
+                ));
+            }
+        }
+
     }
 
 
