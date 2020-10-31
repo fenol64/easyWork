@@ -52,4 +52,21 @@ setTimeout(() => {
     $(".message").hide()
 }, 3000)
 
+function awnser(id_question) {
 
+    let data = {
+        id_question,
+        awnser: $(`textarea[id="${id_question}"]`).val()
+    }
+
+    $.post('https://localhost/Projects/easyWork/admin/awnserQuestion', data, res => {
+        data = JSON.parse(res)
+        $(`div[id="${id_question}"]`).html(`<span class="text-success">${data["ok"]}</span>`)
+
+    })
+
+    $(`textarea[id="${id_question}"]`).remove()
+    $(`.msg`).html(`<div>${data["awnser"]}</div>`)
+    $(`button[id="${id_question}"]`).remove()
+
+}

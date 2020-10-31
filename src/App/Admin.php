@@ -3,7 +3,7 @@ namespace Source\App;
 use Source\models\User;
 use Source\Models\Posts;
 use Source\Models\Categories;
-
+use Source\Models\Support;
 
 class Admin extends Controller
 {
@@ -182,18 +182,45 @@ class Admin extends Controller
                 ));
             }
         }
-
     }
 
+    public function Financeiro()
+    {
+        
+    }
+
+    public function Suporte()
+    {
+        $questions = (new Support)->find()->fetch(true);
+        
+        $data = [];
+
+        if (!$questions) {
+           flash("bg-info", 'Não há posts cadastrados!');
+        }else {
+            foreach ($questions as $question) {
+                $data[] = $question->data();
+            }
+        }
 
 
+        echo $this->view->render("themes/dash/items_dash/admin_dash_itens/Suporte", ["questions" => $data]);
+    }
 
+    public function awnserQuestion($data)
+    {
+        $awnser = filter_var($data["awnser"], FILTER_SANITIZE_STRIPPED);
+        $suport = (new Support)->findById($data["id_question"]);
 
-
-
-
-
-
-
-
+        if ($suport) {
+            $suport->anwser = $awnser;
+            $suport->save();
+            echo json_encode(array(
+                "ok" => "respondido"
+            ));
+            return;
+        } else {
+            flash('bg-danger', "Não foi possivel responder");
+        }
+    }
 }

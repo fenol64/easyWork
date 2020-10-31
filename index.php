@@ -63,6 +63,7 @@ $router->post('/AddCategory', "Admin:AddCategory", "admin.addcategory");
 $router->post('/delCategory', "Admin:delCategory", "admin.delCategory");
 $router->post('/BanUser', "Admin:BanUser", "admin.BanUser");
 $router->post('/BanPost', "Admin:BanPost", "admin.BanPost");
+$router->post('/awnserQuestion', "Admin:awnserQuestion", "admin.awnserQuestion");
 /*
  * SOCIAL
  */

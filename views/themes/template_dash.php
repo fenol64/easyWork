@@ -45,6 +45,9 @@
               </li>
               <div class="dropdown-divider"></div>
               <li class="item">
+                Financeiro
+              </li>
+              <li class="item">
                 Suporte
               </li>
             <?php endif ?>
@@ -72,11 +75,11 @@
                   Suporte
                 </li>
             <?php endif ?>
-            <a href="<?= $router->route("dash.logoff"); ?>" class="btn btn-danger"> Sair </a>
+            <a href="<?= $router->route("dash.logoff"); ?>" class="btn btn-danger mt-3"> Sair </a>
           </ul>    
         </nav>
       <?php endif ?> 
-      <div class="right-container border"><?= $v->section("content"); ?></div>
+      <div class="right-container"><?= $v->section("content"); ?></div>
     </div>
     
     <!-- Optional JavaScript -->

@@ -39,7 +39,7 @@ create table if not exists posts (
     post_body longtext not null,
     categories json not null,
     professional int not null,
-    status_post enum('ok', 'pending', 'cancel') not null default 'pending',
+    status_post enum('ok', 'pending', 'cancel', 'ban') not null default 'pending',
 	created_At timestamp default current_timestamp,
     updated_At timestamp default current_timestamp
 )default charset = utf8;
@@ -69,7 +69,13 @@ create table if not exists categories (
     updated_At timestamp default current_timestamp
 )default charset = utf8;
 
-
+create table if not exists support (
+	id_support int primary key auto_increment,
+	question varchar(255) not null,
+    anwser varchar(255),
+	created_At timestamp default current_timestamp,
+    updated_At timestamp default current_timestamp
+)default charset = utf8;
 
 
     
