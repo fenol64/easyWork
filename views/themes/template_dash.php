@@ -44,9 +44,11 @@
                 Posts
               </li>
               <div class="dropdown-divider"></div>
+              <!-- 
               <li class="item">
                 Financeiro
               </li>
+               -->
               <li class="item">
                 Suporte
               </li>

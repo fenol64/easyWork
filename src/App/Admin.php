@@ -186,7 +186,7 @@ class Admin extends Controller
 
     public function Financeiro()
     {
-        
+        echo $this->view->render("themes/dash/items_dash/admin_dash_itens/Financeiro");
     }
 
     public function Suporte()
