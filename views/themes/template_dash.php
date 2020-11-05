@@ -58,16 +58,7 @@
                   Avaliações
                 </li>
                 <li class="item">
-                  Financeiro
-                </li>
-                <li class="item">
                   Serviços
-                </li>
-                <li class="item">
-                  Horários
-                </li>
-                <li class="item">
-                  Formas de Pagamento
                 </li>
                 <div class="dropdown-divider"></div>
                 <li class="item">
@@ -93,29 +84,5 @@
     <?php if ($v->section("scripts")): ?>
       <?= $v->section("scripts"); ?>
     <?php endif; ?>
-    <script>
-        var header = document.getElementById("listnav");
-        var btns = header.getElementsByClassName("item");
-        
-        $.get('https://localhost/Projects/easyWork/admin/getView', {'view': 'Inicio'} , view => {
-                  $('.result').html(view)
-        })
-        for (var i = 0; i < btns.length; i++) {
-          btns[i].addEventListener("click", function() {
-
-            var current = document.getElementsByClassName("active");
-
-            if (current.length > 0) { 
-              current[0].className = current[0].className.replace(" active", "");
-            } 
-              this.className += " active";
-
-              $.get('https://localhost/Projects/easyWork/admin/getView', {'view': this.innerText} , view => {
-                  $('.result').html(view)
-              })
-            }
-          );
-        }
-    </script>
   </body>
 </html>

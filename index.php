@@ -49,6 +49,10 @@ $router->post('/getService', "Dash:getService", "dash.getservice");
 $router->post('/addService', "Dash:addService", "dash.addservice");
 $router->post('/detailService', "Dash:detailService", "dash.detailService");
 
+
+$router->group('partner');
+$router->get('/getView', 'Partner:getView', 'Partner.getview');
+
 /*
  *  Admin get routes frames
  */
@@ -58,12 +62,15 @@ $router->get('/getView', 'Admin:getView', 'Admin.getview');
 $router->get('/getChart', 'Admin:createChart', 'Admin.createChart');
 
 
-
+/*
+ *  Admin post routes data view
+ */
 $router->post('/AddCategory', "Admin:AddCategory", "admin.addcategory");
 $router->post('/delCategory', "Admin:delCategory", "admin.delCategory");
 $router->post('/BanUser', "Admin:BanUser", "admin.BanUser");
 $router->post('/BanPost', "Admin:BanPost", "admin.BanPost");
 $router->post('/awnserQuestion', "Admin:awnserQuestion", "admin.awnserQuestion");
+
 /*
  * SOCIAL
  */
