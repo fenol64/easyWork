@@ -1,6 +1,7 @@
 <?php
 namespace Source\App;
 use Source\Models\Hates;
+use Source\Models\Posts;
 
 class Partner extends Controller 
 {
@@ -42,6 +43,19 @@ class Partner extends Controller
             "hates" => $data
         ]);
 
+    }
+
+    public function servicos()
+    {
+        $posts = (new Posts)->find("professional = :p AND status_post = :s", "p={$this->user}&s=ok")->fetch(true);
+        echo $this->view->render("themes/dash/items_dash/partner_dash_itens/services", ["posts" => $posts]);
+    }
+
+    public function Suporte()
+    {
+
+        
+        echo $this->view->render("themes/dash/items_dash/partner_dash_itens/support");
     }
 
 }
