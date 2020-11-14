@@ -17,6 +17,7 @@
         },
         "files": [
             "src/Config.php",
+            "src/Config.test.php",
             "src/Helpers.php"
         ]
     },

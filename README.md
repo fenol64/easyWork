@@ -12,4 +12,6 @@ My final high school tcc whitch when you need some help to something you can ord
 
 download on your htdocs folder, import the database and on your terminal type ``composer install``
 
+set the configs on config.php
+
 and then you are ready to go.
