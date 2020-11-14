@@ -27,6 +27,11 @@ class Partner extends Controller
         $this->$view();
     }
 
+    public function inicio()
+    {
+        echo $this->view->render("themes/dash/items_dash/partner_dash_itens/index");
+    }
+
     public function avaliacoes()
     {
         $hates = (new Hates)->find("id_user_receiving = :pid", "pid={$this->user}")->fetch(true);
