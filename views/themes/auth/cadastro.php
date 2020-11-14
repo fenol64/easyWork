@@ -46,7 +46,7 @@
                 <input type="email" placeholder="digite seu email" class="rounded input_second w-100"  name="email" value="<?= $data->email ?>" required>
                 <input type="password" placeholder="digite sua senha" class="rounded input_second w-100 mt-3 mb-3" name="passwd" required>
                 <input type="text" placeholder="digite seu CPF" name="cpf" class="cpf" id="cpf" required> Nascimento: <input type="date" required name="nasc">
-                <div class="w-100 mb-3"></div>
+                <div class="w-100 mb-3" id="result-validate"></div>
                 bio:<br>
                 <textarea id="bio" name="bio"></textarea><p class="mb-3">
                 ao clicar em cadastrar você aceita os <a href="<?= $router->route('web.terms') ?>">Termos de uso</a>.

@@ -10,12 +10,12 @@
     </a>
 </div>
 
-<div class="main text-center">
+<div class="main text-center w-100">
     <form action="<?= site().'/register-partner' ?>" method="post" enctype="multipart/form-data">
         <label for="profilepic" class="d-block text-center">
             <div class="image_preview">
                 <img src="<?= asset('/img/icons/avatar.png') ?>" id="img_preview" width="60">
-                <input type="file" id="profilepic" class="d-none" required>
+                <input type="file" id="profilepic" accept="image/png, image/jpeg" class="d-none" required>
                 
             </div>
         </label>
