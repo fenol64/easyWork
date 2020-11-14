@@ -80,6 +80,7 @@
     <script src="<?=asset('js/libs/jquery.js')?>"></script>
     <script src="<?=asset('js/libs/popper.js')?>"></script>
     <script src="<?=asset('js/libs/bootstrap.min.js')?>"></script>
+    <script src="<?= asset("js/partners_reqs.js"); ?>"></script>
     <script src="<?=asset('js/reqs.js')?>"></script>
     <?php if ($v->section("scripts")): ?>
       <?= $v->section("scripts"); ?>

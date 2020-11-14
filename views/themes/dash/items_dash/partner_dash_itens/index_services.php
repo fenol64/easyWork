@@ -1,14 +1,16 @@
-<?php $v->start("scripts"); ?>
-    <script src="<?= asset("js/dash_reqs.js"); ?>"></script>
-<?php $v->end(); ?>
-
 <nav class="flex-container-partner">
 
     <a id="agendado" class="navbar_link">Agendado</a>
-    <a id="andamento" class="navbar_link">Em andamento</a>
+    <a id="andamento" class="navbar_link ml-4 mr-4">Em andamento</a>
     <a id="finalizado" class="navbar_link">Finalizado</a>
     
 </nav>
+<div id="services">
+  <div class="flex-comming-soon">
+    <img src="<?= asset('img/img_error.jpg') ?>">
+    <h2 class="blue-bg">EM BREVE</h2>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -53,5 +55,3 @@
     </div>
   </div>
 </div>
-
-<script src="<?= asset("js/dash_reqs.js"); ?>"></script>

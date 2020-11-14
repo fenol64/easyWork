@@ -29,7 +29,7 @@ class Partner extends Controller
 
     public function inicio()
     {
-        echo $this->view->render("themes/dash/items_dash/partner_dash_itens/index");
+        echo $this->view->render("themes/dash/items_dash/partner_dash_itens/index_services");
     }
 
     public function avaliacoes()
