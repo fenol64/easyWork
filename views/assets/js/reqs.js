@@ -105,7 +105,7 @@ $(function () {
             r = (r <2)?0:11-r;
             if(r != cpf.substring(j, j+1)) result = false;
         });
-        console.log(result)
+
         if (!result) {
             $('#result-validate').html(`<div class="text-danger text-center">CPF inválido</div>`)   
         } else {
