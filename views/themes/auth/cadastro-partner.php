@@ -31,4 +31,5 @@
 </div>
 <?php $v->start("scripts"); ?>
     <script src="<?= asset("js/todo.js"); ?>"></script>
+    <script src="<?= asset("js/reqs.js"); ?>"></script>
 <?php $v->end(); ?>

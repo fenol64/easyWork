@@ -1,9 +1,6 @@
 <nav class="flex-container-partner">
-
-    <a id="agendado" class="navbar_link">Agendado</a>
     <a id="andamento" class="navbar_link ml-4 mr-4">Em andamento</a>
     <a id="finalizado" class="navbar_link">Finalizado</a>
-    
 </nav>
 <div id="services">
   <div class="flex-comming-soon">
