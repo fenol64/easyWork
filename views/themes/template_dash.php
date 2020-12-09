@@ -62,9 +62,6 @@
                 </li>
                 <div class="dropdown-divider"></div>
                 <li class="item">
-                  Perfil
-                </li>
-                <li class="item">
                   Suporte
                 </li>
             <?php endif ?>
