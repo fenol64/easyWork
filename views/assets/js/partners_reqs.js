@@ -20,3 +20,9 @@ for (var i = 0; i < btns.length; i++) {
     }
   );
 }
+
+
+setInterval(() => {
+  // get services 
+  
+}, 5000);

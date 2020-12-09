@@ -57,18 +57,21 @@ class Partner extends Controller
         echo $this->view->render("themes/dash/items_dash/partner_dash_itens/services", ["posts" => $posts]);
     }
 
-
-    public function Perfil()
-    {
-        echo $this->router->redirect('web.error', ["errcode" => "201"]);
-    }
-
     public function Suporte()
     {
         $questions = (new Support)->find("id_user = :id" , "id={$this->user}")->fetch(true);
         echo $this->view->render("themes/dash/items_dash/partner_dash_itens/support", [
             "questions" => $questions
         ]);
+    }
+
+    public function getService($data)
+    {
+        $posts = (new Posts)->find("professional = :p AND status_post = :s", "p={null}&s=met")->fetch();
+
+
+
+        echo json_encode()
     }
 
 }

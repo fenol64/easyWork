@@ -52,7 +52,7 @@ $router->post('/detailService', "Dash:detailService", "dash.detailService");
 
 $router->group('partner');
 $router->get('/getView', 'Partner:getView', 'Partner.getview');
-
+$router->get('/getservice', 'Partner:getService', 'Partner.getview');
 /*
  *  Admin get routes frames
  */
