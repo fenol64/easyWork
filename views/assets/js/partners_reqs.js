@@ -21,8 +21,28 @@ for (var i = 0; i < btns.length; i++) {
   );
 }
 
+function acceptService(id_post) {
+  console.log(id_post)
+    $.post('https://localhost/Projects/easyWork/partner/acceptService', {id_post : id_post} , res => {
+      let data = JSON.parse(res)
+
+      if (!data.error) {
+        location.reload()
+      }
+    })
+
+    $('#modalService').modal('toggle')
+} 
+
 
 setInterval(() => {
   // get services 
-  
-}, 5000);
+    $.get('https://localhost/Projects/easyWork/partner/getservice/met', res => {
+      let data = JSON.parse(res)
+      $("#btn-accept").attr('onclick', `acceptService(${data.id_post})`)
+      if (!data.error) {
+        $('#modalService').modal('toggle')
+
+      }
+  })
+}, 10000)

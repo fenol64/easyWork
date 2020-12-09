@@ -67,11 +67,25 @@ class Partner extends Controller
 
     public function getService($data)
     {
-        $posts = (new Posts)->find("professional = :p AND status_post = :s", "p={null}&s=met")->fetch();
+        $posts = (new Posts)->find("professional IS NULL AND status_post = :s", "s={$data["type"]}")->fetch();
 
-
-
-        echo json_encode()
+        if ($posts) {
+            echo json_encode($posts->data());
+        } else {
+            echo json_encode(["error" => true]);
+        }
+       
     }
 
+    public function acceptService($data)
+    {
+        $post = (new Posts())->findById($data["id_post"]);
+
+        $post->professional = $this->user;
+        $post->status_post = 'pending';
+
+        if ($post->save()) {
+            echo json_encode(['ok' => true]);
+        }
+    }
 }
