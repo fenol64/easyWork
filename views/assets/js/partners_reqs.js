@@ -41,6 +41,13 @@ function post_spec(id_post) {
   })
 }
 
+function endservice(id_post) {
+  $.post('https://localhost/Projects/easyWork/partner/endService', { id_post : id_post }, res => {
+      var data = JSON.parse(res)
+      buildModal(data)
+  })
+}
+
 
 function buildModal (data) {
   $('#tags').html('')
@@ -53,6 +60,7 @@ function buildModal (data) {
   $('#pic').attr('width', '60')
   $('#nome_partner').html(`${data[0][1]["nome"]} ${data[0][1]["Snome"]}`)
   $('#desc_partner').html(data[0][1]["bio"])
+  $('#endbtn').attr('onclick', `endservice(${data[0][0]["id_post"]})`)
 }
 
 function renderPost(posts) {

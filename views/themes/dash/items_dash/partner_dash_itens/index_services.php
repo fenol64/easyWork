@@ -44,7 +44,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary"> Cancelar </button>
-        <button class="btn btn-success"> Finalizar </button>
+        <button class="btn btn-success" id="endbtn"> Finalizar </button>
       </div>
     </div>
   </div>

@@ -132,10 +132,18 @@ class Partner extends Controller
                 stringToArray($post->categories)
             );
         }
-
-        var_dump($data);
-
         echo json_encode($data);
                 
+    }
+
+    public function endService($data)
+    {
+        $post = (new Posts)->findById($data["id_post"]);
+
+        $post->status_post = 'ok';
+
+        if ($post->save()) {
+            echo json_encode(['ok' => true]);
+        }
     }
 }
