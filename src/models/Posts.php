@@ -36,4 +36,14 @@ class Posts extends DataLayer
         }
 
     }
+
+    public function getUser()
+    {
+        $users = (new User)->find("id_user = :uid", "uid={$this->creator}")->fetch(true);
+        if ($users) {
+            foreach ($users as $user) {
+                return $user->data();
+            }
+        }
+    }
 }

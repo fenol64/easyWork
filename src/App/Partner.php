@@ -88,4 +88,54 @@ class Partner extends Controller
             echo json_encode(['ok' => true]);
         }
     }
+
+    public function getServices($data)
+    {
+        $type = filter_var($data["type"], FILTER_SANITIZE_STRIPPED);
+
+        $posts = (new Posts)
+                    ->find("status_post=:type AND professional = :c", "type={$type}&c={$this->user}")
+                    ->fetch(true);
+        
+        $data = [];
+        foreach ($posts as $post) {
+
+            $message = $post->status_post == 'pending' ? 'Finalizar' : 'Finalizado';
+
+            $data[] = array(
+                $post->data(),
+                $post->getUser(),
+                $message
+            );
+        }
+        
+        echo json_encode($data);
+    }
+
+
+    public function detailService($data)
+    {
+        $posts = (new Posts)
+                    ->find("id_post = :pid", "pid={$data["id_post"]}")
+                    ->fetch(true);
+
+        $data = [];
+
+    
+        foreach ($posts as $post) {
+
+            $message = $post->status_post == 'pending' ? 'Finalizar' : 'Finalizado';
+            $data[] = array(
+                $post->data(),
+                $post->getUser(),
+                $message,
+                stringToArray($post->categories)
+            );
+        }
+
+        var_dump($data);
+
+        echo json_encode($data);
+                
+    }
 }

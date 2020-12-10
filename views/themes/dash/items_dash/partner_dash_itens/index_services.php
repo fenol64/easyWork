@@ -1,11 +1,8 @@
 <nav class="flex-container-partner">
-    <a id="andamento" class="navbar_link ml-4 mr-4">Em andamento</a>
-    <a id="finalizado" class="navbar_link">Finalizado</a>
+    <a id="andamento" class="navbar_link ml-4 mr-4 font-weight-bold"> Serviços em andamento</a>
 </nav>
-<div id="services">
-  <div class="flex-comming-soon">
-
-  </div>
+<div id="services ml-5 mr-5" style="margin: 20px 20%;">
+    <div id="root"></div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
