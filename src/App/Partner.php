@@ -146,4 +146,15 @@ class Partner extends Controller
             echo json_encode(['ok' => true]);
         }
     }
+    
+    public function cancelService($data)
+    {
+        $post = (new Posts)->findById($data["id_post"]);
+
+        $post->status_post = 'cancel';
+
+        if ($post->save()) {
+            echo json_encode(['ok' => true]);
+        }
+    }
 }

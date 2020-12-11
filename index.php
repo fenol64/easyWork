@@ -54,9 +54,11 @@ $router->group('partner');
 $router->get('/getView', 'Partner:getView', 'Partner.getview');
 $router->get('/getservice/{type}', 'Partner:getService', 'Partner.getService');
 $router->get('/getservices/{type}', 'Partner:getServices', 'Partner.getServices');
+
 $router->post('/acceptService', 'Partner:acceptService', 'partner.acceptService');
 $router->post('/detailService', "Partner:detailService", "partner.detailService");
 $router->post('/endService', "Partner:endService", "partner.endService");
+$router->post('/cancelService', "Partner:cancelService", "partner.cancelService");
 /*
  *  Admin get routes frames
  */

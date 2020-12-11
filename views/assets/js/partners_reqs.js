@@ -22,7 +22,6 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 function acceptService(id_post) {
-  console.log(id_post)
     $.post('https://localhost/Projects/easyWork/partner/acceptService', { id_post } , res => {
       let data = JSON.parse(res)
 
@@ -35,18 +34,30 @@ function acceptService(id_post) {
 } 
 
 function post_spec(id_post) {
-  $.post('https://localhost/Projects/easyWork/partner/detailService', { id_post : id_post }, res => {
+  $.post('https://localhost/Projects/easyWork/partner/detailService', { id_post }, res => {
       var data = JSON.parse(res)
       buildModal(data)
   })
 }
 
 function endservice(id_post) {
-  $.post('https://localhost/Projects/easyWork/partner/endService', { id_post : id_post }, res => {
+  $.post('https://localhost/Projects/easyWork/partner/endService', { id_post }, res => {
       var data = JSON.parse(res)
       buildModal(data)
   })
 }
+
+function cancelService(id_post) {
+  if (confirm('Você tem certeza que deseja cancelar, a operação não pode ser desfeita!')) {
+      $.post('https://localhost/Projects/easyWork/partner/cancelService', { id_post }, res => {
+        var data = JSON.parse(res)
+        if (!data.error) {
+          location.reload()
+        }
+    })  
+  }
+}
+
 
 
 function buildModal (data) {
@@ -60,6 +71,7 @@ function buildModal (data) {
   $('#pic').attr('width', '60')
   $('#nome_partner').html(`${data[0][1]["nome"]} ${data[0][1]["Snome"]}`)
   $('#desc_partner').html(data[0][1]["bio"])
+  $('#cancelBtn').attr('onclick', `cancelService(${data[0][0]["id_post"]})`)
   $('#endbtn').attr('onclick', `endservice(${data[0][0]["id_post"]})`)
 }
 
@@ -97,9 +109,13 @@ setInterval(() => {
 
     }
 })
-}, 1000)
+}, 5000)
 
 
+setInterval(() => {
+  // get services
+  getposts('pending') 
 
+}, 1500)
 
-
+getposts('pending') 

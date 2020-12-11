@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary"> Cancelar </button>
+        <button class="btn btn-primary" id="cancelBtn"> Cancelar </button>
         <button class="btn btn-success" id="endbtn"> Finalizar </button>
       </div>
     </div>
